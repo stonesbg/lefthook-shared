@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+  commands:
+    pulumi-preview:
+      run: pulumi preview --non-interactive
+    typescript-lint:
+      glob: "*.ts"
+      run: yarn @biomejs/biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+    pulumi-test:
+      run: yarn test
