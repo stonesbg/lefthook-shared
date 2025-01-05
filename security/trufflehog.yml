@@ -1,0 +1,6 @@
+pre-commit:
+  commands:
+    trufflehog:
+      run: trufflehog filesystem --no-update --only-verified . || (echo "❌ Secrets detected by TruffleHog!" && exit 1)
+      files: git diff --cached --name-only --diff-filter=ACMR
+      skip: false
